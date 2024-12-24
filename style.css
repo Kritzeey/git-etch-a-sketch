@@ -27,10 +27,26 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 48px;
+    gap: 32px;
+}
+
+.second-container {
+    background-color: #77B7D0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 8px;
+    width: 104px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     background-color: #77B7D0;
     height: 56px;
@@ -41,4 +57,26 @@ body {
     color: white;
     cursor: pointer;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#cpicker {
+    border-radius: 4px;
+    border: none;
+    height: 32px;
+    width: 48px;
+    cursor: pointer;
+}
+
+#smallbutton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: white ;
+    height: 16px;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #77B7D0;
+    font-weight: 600;
 }

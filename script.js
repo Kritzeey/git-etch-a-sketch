@@ -36,14 +36,6 @@ function makeGrid(amount = 16) {
 
         container.appendChild(horizontalContainer);
     };
-
-    const boxes = document.querySelectorAll(".boxes");
-    boxes.forEach(boxes => {
-        boxes.addEventListener("mouseenter",
-            (e) => {
-                e.target.style.background = "blue";
-            })
-    });
 }
 
 function clearCanvas() {
@@ -60,8 +52,18 @@ function resizeBoxes() {
         };
 }
 
+function draw(box, color = "blue") {
+    if (box.style.background == "white") {
+        box.style.background = "blue"
+    };
+}
+
 function main() {
     makeGrid()
+
+    const boxes = document.querySelectorAll(".boxes");
+    boxes.forEach(e => e.addEventListener("mouseover", (e) => {draw(e.target)}))
+    
     const clearBtn = document.querySelector("#clear");
     clearBtn.addEventListener("click", clearCanvas);
 
