@@ -4,13 +4,14 @@ function getRandomColor() {
 
     for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
-    }
+    };
 
     return color;
 }
 
 function makeGrid(amount = 16) {
-    const container = document.querySelector(".box-container")
+    const container = document.querySelector(".box-container");
+    container.innerHTML = "";
 
     for (let i = 0; i < amount; i++) {
         const name = "abcdefghijklmnop";
@@ -22,22 +23,21 @@ function makeGrid(amount = 16) {
         );
 
         for (let j = 0; j < amount; j++) {
-            const div = document.createElement("div")
-            horizontalContainer.appendChild(div)
+            const div = document.createElement("div");
+            horizontalContainer.appendChild(div);
             div.setAttribute(
                 "style",
-                `width: ${512 / amount}px;\
-                height: ${512 / amount}px;
-                background: white;`)
-            div.id = `${name[i]}${j}`
-            div.classList.add("boxes")
+                `width: ${384 / amount}px;\
+                height: ${384 / amount}px;
+                background: white;`);
+            div.id = `${name[i]}${j}`;
+            div.classList.add("boxes");
         };
 
         container.appendChild(horizontalContainer);
     };
 
     const boxes = document.querySelectorAll(".boxes");
-
     boxes.forEach(boxes => {
         boxes.addEventListener("mouseenter",
             (e) => {
@@ -46,4 +46,27 @@ function makeGrid(amount = 16) {
     });
 }
 
-makeGrid()
+function clearCanvas() {
+    const boxes = document.querySelectorAll(".boxes");
+    boxes.forEach(e => e.style.background = "white");
+}
+
+function resizeBoxes() {
+    const userInput = prompt("Enter the box size", 16);
+        if (5 <= userInput && userInput <= 100) {
+            makeGrid(userInput)
+        } else {
+            alert("Input invalid!")
+        };
+}
+
+function main() {
+    makeGrid()
+    const clearBtn = document.querySelector("#clear");
+    clearBtn.addEventListener("click", clearCanvas);
+
+    const sizeBtn = document.querySelector("#size");
+    sizeBtn.addEventListener("click", resizeBoxes);
+}
+
+main()
