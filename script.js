@@ -47,6 +47,8 @@ function resizeBoxes() {
     const userInput = prompt("Enter the box size", 16);
         if (5 <= userInput && userInput <= 100) {
             makeGrid(userInput)
+            const boxes = document.querySelectorAll(".boxes");
+            boxes.forEach(e => e.addEventListener("mouseover", (e) => {draw(e.target)}))
         } else {
             alert("Input invalid!")
         };
@@ -54,7 +56,7 @@ function resizeBoxes() {
 
 function draw(box, color = "blue") {
     if (box.style.background == "white") {
-        box.style.background = "blue"
+        box.style.background = color
     };
 }
 
@@ -62,7 +64,7 @@ function main() {
     makeGrid()
 
     const boxes = document.querySelectorAll(".boxes");
-    boxes.forEach(e => e.addEventListener("mouseover", (e) => {draw(e.target)}))
+    boxes.forEach(e => e.addEventListener("mouseover", (e) => {draw(e.target, getRandomColor())}))
     
     const clearBtn = document.querySelector("#clear");
     clearBtn.addEventListener("click", clearCanvas);
